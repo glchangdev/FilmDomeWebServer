@@ -1,5 +1,6 @@
 package com.filmdome.webserver.controller;
 
+import com.filmdome.webserver.dto.UserDisplayDto;
 import com.filmdome.webserver.dto.UserDto;
 import com.filmdome.webserver.entity.User;
 import com.filmdome.webserver.model.PasswordView;
@@ -31,9 +32,9 @@ public class UserBioController {
     }
 
     @GetMapping("/displayUserInfo")
-    public String displayUserInfo(@RequestParam int id, Model model) {
+    public String displayUserInfo(@SessionAttribute("user") UserDisplayDto user, Model model) {
 
-        User fetchedUser = accountRepository.findById(id).orElse(null);
+        User fetchedUser = accountRepository.findById(user.getId()).orElse(null);
         loadUser(model, fetchedUser);
 
         return "user-update";
