@@ -35,6 +35,7 @@ public class SignUpController {
     @PostMapping("/processUserSignUp")
     public String processUserSignUp(@Valid @ModelAttribute UserDto user, BindingResult result, Model model, HttpSession session) {
 
+        System.out.println("===== SignUpController reached =====");
         boolean errorFound = false;
 
         if (result.hasErrors()) {
