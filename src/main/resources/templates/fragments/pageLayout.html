@@ -18,7 +18,7 @@
         <li><a href="/sessionEndLogout" th:href="@{/sessionEndLogout}">Sign Out</a></li>
     </ul>
     <div th:if="${session.user != null}">
-        <a th:href="@{'/displayUserInfo?id=' + ${session.user.id}}" class="fs-3 font-weight-bold text-white" th:text="${session.user.firstName + ' ' + session.user.lastName}"></a>
+        <a th:href="@{/displayUserInfo}" class="fs-3 font-weight-bold text-white" th:text="${session.user.firstName + ' ' + session.user.lastName}"></a>
     </div>
     <div th:unless="${session.user != null}">
         <span class="text-white">Welcome, Guest</span>
