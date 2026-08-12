@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="fs-4">
-                    <span th:text="${movie.runTime} + ' minutes | ' + ${movie.rating}"></span>
+                    <span th:text="${movie.runTime + ' minutes | ' + movie.rating + ' | ' + #dates.format(movie.releaseDate, 'MMMM dd, yyyy')}"></span>
                 </p>
             </div>
         </div>
