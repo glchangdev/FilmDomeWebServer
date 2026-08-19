@@ -4,7 +4,6 @@ import com.filmdome.movies.entity.Actor;
 import com.filmdome.movies.entity.ActorMovie;
 import com.filmdome.webserver.dto.ActorDto;
 import com.filmdome.webserver.dto.MovieDto;
-
 import java.util.ArrayList;
 import java.util.List;
 

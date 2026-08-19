@@ -3,9 +3,6 @@ package com.filmdome.webserver.util;
 import com.filmdome.movies.entity.Movie;
 import com.filmdome.webserver.dto.MovieDto;
 import com.filmdome.webserver.dto.MovieSearchDto;
-
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 

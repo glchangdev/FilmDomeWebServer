@@ -2,11 +2,12 @@ package com.filmdome.webserver.controller;
 
 import com.filmdome.movies.repository.MoviesRepository;
 import com.filmdome.webserver.repository.NewsRepository;
+import com.filmdome.webserver.util.UserUtil;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -15,7 +16,6 @@ import java.util.Date;
 public class NavigationController {
 
     private final NewsRepository newsRepository;
-
     private final MoviesRepository moviesRepository;
 
     /**
@@ -39,50 +39,34 @@ public class NavigationController {
      * This page can be accessed by both logged-in users
      * and guests.
      *
-     * @param theModel Model used to pass data to the view
+     * @param model Model used to pass data to the view
      * @return Home page
      */
     @GetMapping("/displayHomePage")
-    public String displayHomePage(Model theModel) {
+    public String displayHomePage(Model model) {
 
         // Determine the date range for newly released movies.
         Date end = new Date();
-
-        Date start = Date.from(Instant.now().minus(30, ChronoUnit.DAYS));
+        Date start = Date.from(Instant.now().minus(90, ChronoUnit.DAYS));
 
         // Retrieve highly popular movies.
-        theModel.addAttribute("trendingMovies", moviesRepository.findByPopularityGreaterThanOrderByPopularityDesc(50.0));
+        model.addAttribute("trendingMovies", moviesRepository.findByPopularityGreaterThanOrderByPopularityDesc(50.0));
 
         // Retrieve movies released during the last 30 days.
-        theModel.addAttribute("newestMovies", moviesRepository.findByReleaseDateBetweenOrderByReleaseDateDesc(start, end));
+        model.addAttribute("newestMovies", moviesRepository.findByReleaseDateBetweenOrderByReleaseDateDesc(start, end));
 
         return "home-page";
     }
 
-    /**
-     * Displays the search page.
-     *
-     * Trending and newly released movies are included
-     * so that the page has content before a user performs
-     * a search.
-     *
-     * @param theModel Model used to pass data to the view
-     * @return Search page
-     */
+    @GetMapping("/displayGuestHomePage")
+    public String displayGustHomePage(Model theModel, HttpSession session) {
+
+        session.setAttribute("user", UserUtil.getGuestUserDisplayDto());
+        return "redirect:/displayHomePage";
+    }
+
     @GetMapping("/displaySearchPage")
     public String displaySearchPage(Model theModel) {
-
-        // Determine the date range for newly released movies.
-        Date end = new Date();
-
-        Date start = Date.from(Instant.now().minus(30, ChronoUnit.DAYS));
-
-        // Populate trending movies.
-        theModel.addAttribute("trendingMovies", moviesRepository.findByPopularityGreaterThanOrderByPopularityDesc(50.0));
-
-        // Populate newly released movies.
-        theModel.addAttribute("newestMovies", moviesRepository.findByReleaseDateBetweenOrderByReleaseDateDesc(start, end));
-
         return "searched-page";
     }
 

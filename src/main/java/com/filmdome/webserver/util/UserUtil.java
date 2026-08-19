@@ -49,6 +49,17 @@ public class UserUtil {
         return dto;
     }
 
+    public static UserDisplayDto getGuestUserDisplayDto() {
+
+        UserDisplayDto dto = new UserDisplayDto();
+
+        dto.setId(-1);
+        dto.setFirstName("Guest");
+        dto.setLastName("Guest");
+
+        return dto;
+    }
+
     public static User convertTo(UserDto dto) {
 
         User user = new User();

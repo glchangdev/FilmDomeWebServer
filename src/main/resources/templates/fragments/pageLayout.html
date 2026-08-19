@@ -19,31 +19,19 @@
 <nav th:fragment="nav" xmlns:th="http://www.w3.org/1999/xhtml">
 
     <ul>
-        <li><a th:href="@{/displayHomePage}">
-                Home
-            </a>
-        </li>
-        <li><a th:href="@{/newsPage}">
-                News
-            </a>
-        </li>
-        <li><a th:href="@{/displaySearchPage}">
-                Search
-            </a>
-        </li>
-        <li th:if="${session.user != null}">
-            <a th:href="@{/sessionEndLogout}">
-                Sign Out
-            </a>
-        </li>
+        <li><a th:href="@{/displayHomePage}">Home</a></li>
+        <li><a th:href="@{/newsPage}">News</a></li>
+        <li><a th:href="@{/displaySearchPage}">Search</a></li>
+        <li th:if="${session.user != null}"><a th:href="@{/sessionEndLogout}">Sign Out</a></li>
     </ul>
     <div th:if="${session.user != null}">
-        <a th:href="@{/displayUserInfo}" class="fs-3 font-weight-bold text-white" th:text="${session.user.firstName + ' ' + session.user.lastName}"></a>
+        <div th:if="${session.user.id != -1}">
+            <a th:href="@{/displayUserInfo}" class="fs-3 font-weight-bold text-white" th:text="${session.user.firstName + ' ' + session.user.lastName}"></a>
+        </div>
+        <!-- If user.id == -1 then it's a guest user-->
+        <div th:unless="${session.user.id != -1}">
+            <span class="text-white fs-5 fw-bold">Guest</span>
+        </div>
     </div>
 
-    <div th:unless="${session.user != null}">
-        <span class="text-white fs-5 fw-bold">
-            Guest
-        </span>
-    </div>
 </nav>

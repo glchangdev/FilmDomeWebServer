@@ -2,8 +2,6 @@ package com.filmdome.webserver.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
