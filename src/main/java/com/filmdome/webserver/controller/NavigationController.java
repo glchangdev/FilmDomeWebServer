@@ -2,11 +2,11 @@ package com.filmdome.webserver.controller;
 
 import com.filmdome.movies.repository.MoviesRepository;
 import com.filmdome.webserver.repository.NewsRepository;
-import com.filmdome.webserver.util.MovieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -17,15 +17,6 @@ public class NavigationController {
     private final NewsRepository newsRepository;
 
     private final MoviesRepository moviesRepository;
-
-    Date end = new Date();
-
-    /**
-     * Date representing 30 days before today.
-     * Used as the lower limit when retrieving
-     * newly released movies.
-     */
-    Date start = Date.from(Instant.now().minus(30, ChronoUnit.DAYS));
 
     /**
      * Constructor injection for required repositories.
@@ -45,11 +36,19 @@ public class NavigationController {
      * The page includes a list of trending movies
      * and movies released within the last 30 days.
      *
+     * This page can be accessed by both logged-in users
+     * and guests.
+     *
      * @param theModel Model used to pass data to the view
      * @return Home page
      */
     @GetMapping("/displayHomePage")
     public String displayHomePage(Model theModel) {
+
+        // Determine the date range for newly released movies.
+        Date end = new Date();
+
+        Date start = Date.from(Instant.now().minus(30, ChronoUnit.DAYS));
 
         // Retrieve highly popular movies.
         theModel.addAttribute("trendingMovies", moviesRepository.findByPopularityGreaterThanOrderByPopularityDesc(50.0));
@@ -72,6 +71,11 @@ public class NavigationController {
      */
     @GetMapping("/displaySearchPage")
     public String displaySearchPage(Model theModel) {
+
+        // Determine the date range for newly released movies.
+        Date end = new Date();
+
+        Date start = Date.from(Instant.now().minus(30, ChronoUnit.DAYS));
 
         // Populate trending movies.
         theModel.addAttribute("trendingMovies", moviesRepository.findByPopularityGreaterThanOrderByPopularityDesc(50.0));

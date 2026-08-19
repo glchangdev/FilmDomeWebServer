@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <div th:replace="~{fragments/pageLayout :: head}"></div>
 
 <body class="d-flex align-items-center justify-content-center vh-100 loginSignUpBody">
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-5">
+
             <div class="card rounded-bottom shadow bg-white">
 
                 <div class="card-header text-center text-white loginSignUpCardHeader">
@@ -15,15 +18,15 @@
                 <div class="card-body">
 
                     <div th:if="${sessionExpired}" class="alert alert-warning mt-3 mx-5">
-
-                        Your session has expired.
-                        Please login again.
-
+                        Your session has expired. Please login again.
                     </div>
+
                     <form th:action="@{/login}" method="post" th:object="${userLogin}">
 
                         <div class="form-floating mb-3 mx-5">
-                            <input type="text" id="loginInput" th:field="*{loginInput}" class="form-control" placeholder="Username, Email, Phone Number" required>
+
+                            <input type="text" id="loginInput" th:field="*{loginInput}" class="form-control"
+                                   placeholder="Username, Email, Phone Number" required>
 
                             <label for="loginInput">
                                 Username, Email, Phone Number
@@ -31,26 +34,41 @@
                         </div>
 
                         <div class="form-floating mx-5">
-                            <input type="password" id="password" th:field="*{password}" class="form-control mt-4" placeholder="Password" required>
-                            <label for="password">Password</label>
-                        </div>
 
+                            <input type="password" id="password" th:field="*{password}" class="form-control mt-4"
+                                   placeholder="Password" required>
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                        </div>
                         <div th:if="${errorMessage}" class="alert alert-danger mt-3 mx-5" role="alert">
                             <span th:text="${errorMessage}"></span>
                         </div>
-
                         <div class="form-group text-center">
+
                             <button type="submit" class="btn fs-3 btn-primary btn-block col-md-5 mt-3 rounded-pill">
                                 Continue
                             </button>
                         </div>
                     </form>
 
-                    <hr style="margin: 27px;" />
-
+                    <hr style="margin: 27px;">
                     <p class="text-center mt-4">
                         Don't have an account?
-                        <a th:href="@{/displaySignUpPage}">Sign Up</a>
+                        <a th:href="@{/displaySignUpPage}">
+                            Sign Up
+                        </a>
+                    </p>
+                    <p class="text-center mt-2">
+                        Or
+                    </p>
+                    <p class="text-center mt-2">
+                        Sign In as
+                        <a th:href="@{/displayHomePage}">
+                            Guest
+                        </a>
                     </p>
                 </div>
             </div>
@@ -59,5 +77,6 @@
 </div>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

@@ -1,36 +1,39 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="~{fragments/pageLayout :: head}"></div>
 <body>
-
 <div th:replace="~{fragments/pageLayout :: nav}"></div>
-
-    <div class="container bg-light">
-        <div class="container pt-4">
-            <h2 class="text-center mb-3 fw-bold display-4 ">Trending Now</h2>
-            <div class="row">
-                <div class="col-md">
-                    <th:block th:each="movie : ${trendingMovies}">
-                        <a th:href="@{'/displayMovieInfo?id=' + ${movie.id}}">
-                            <img class="movieImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.poster}}"/>
-                        </a>
-                    </th:block>
-                </div>
-            </div>
-        </div>
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="text-center mb-3 mt-4 fw-bold display-4">Newest Films</h2>
-                    <th:block th:each="movie : ${newestMovies}">
-                        <a th:href="@{'/displayMovieInfo?id=' + ${movie.id}}">
-                            <img class="movieImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.poster}}" />
-                        </a>
-                    </th:block>
-                </div>
+<div class="container bg-light">
+    <div class="container pt-4">
+        <h2 class="text-center mb-3 fw-bold display-4">
+            Trending Now
+        </h2>
+        <div class="row">
+            <div class="col-md">
+                <th:block th:each="movie : ${trendingMovies}">
+                    <a th:href="@{'/displayMovieInfo?id=' + ${movie.id}}">
+                        <img class="movieImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.poster}}" th:alt="${movie.name}">
+                    </a>
+                </th:block>
             </div>
         </div>
     </div>
-</body>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-3 mt-4 fw-bold display-4">
+                    Newest Films
+                </h2>
+                <th:block th:each="movie : ${newestMovies}">
+                    <a th:href="@{'/displayMovieInfo?id=' + ${movie.id}}">
+                        <img class="movieImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.poster}}" th:alt="${movie.name}">
+                    </a>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>
 <div th:replace="~{fragments/pageLayout :: foot}"></div>
+</body>
 </html>
