@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
 <script th:src="@{/js/user.js}"></script>
-
 <div th:replace="~{fragments/pageLayout :: head}"></div>
-
 <body>
 <div th:replace="~{fragments/pageLayout :: nav}"></div>
 
@@ -15,71 +12,49 @@
                 <div class="card-header text-center text-white loginSignUpCardHeader">
                     <h4 class="fw-bold mt-3">Your Account</h4>
                 </div>
-
                 <div class="card-body loginSignUpCardBody">
                     <form th:action="@{/updateUserInfo}" method="post" th:object="${userView}">
-
                         <div th:if="${userView != null and #fields.hasErrors('phoneNumber')}" class="alert alert-danger">
                             <h5>Account field(s) doesn't meet their requirements:</h5>
                             <ul class="mb-0 ps-4 text-start fw-bold">
                                 <li th:each="err : ${#fields.errors('phoneNumber')}" th:text="${err}"></li>
                             </ul>
                         </div>
-
-                        <div th:if="${userInputErrors}" class="alert alert-danger text-center fw-bold"
-                             th:text="${userInputErrors}">
+                        <div th:if="${userInputErrors}" class="alert alert-danger text-center fw-bold" th:text="${userInputErrors}">
                         </div>
-
-                        <div th:if="${updateAccountSuccess}" class="alert alert-success text-center fw-bold"
-                             th:text="${updateAccountMsg}">
+                        <div th:if="${updateAccountSuccess}" class="alert alert-success text-center fw-bold" th:text="${updateAccountMsg}">
                         </div>
-
                         <input type="hidden" name="id" th:value="${userView.id}">
-
                         <div class="form-floating mx-5">
-                            <input type="text" id="firstName" th:value="${userView.firstName}" name="firstName"
-                                   class="form-control border" required>
+                            <input type="text" id="firstName" th:value="${userView.firstName}" name="firstName" class="form-control border" required>
                             <label for="firstName" class="fw-bold">First Name</label>
                         </div>
-
                         <div class="form-floating mx-5">
-                            <input type="text" id="lastName" th:value="${userView.lastName}" name="lastName"
-                                   class="form-control border mt-3" required>
+                            <input type="text" id="lastName" th:value="${userView.lastName}" name="lastName" class="form-control border mt-3" required>
                             <label for="lastName" class="fw-bold">Last Name</label>
                         </div>
-
                         <div class="form-floating mx-5">
-                            <input type="email" id="email" th:value="${userView.email}" name="email"
-                                   class="form-control border mt-3" required>
+                            <input type="email" id="email" th:value="${userView.email}" name="email" class="form-control border mt-3" required>
                             <label for="email" class="fw-bold">Email</label>
                         </div>
-
                         <div class="form-floating mx-5">
-                            <input type="text" id="username" th:value="${userView.username}" name="username"
-                                   class="form-control border mt-3" required>
+                            <input type="text" id="username" th:value="${userView.username}" name="username" class="form-control border mt-3" required>
                             <label for="username" class="fw-bold">Username</label>
                         </div>
-
                         <div class="form-floating mx-5">
-                            <input type="text" id="phoneNumber" th:value="${userView.phoneNumber}" name="phoneNumber"
-                                   class="form-control border mt-3" required>
+                            <input type="text" id="phoneNumber" th:value="${userView.phoneNumber}" name="phoneNumber" class="form-control border mt-3" required>
                             <label for="phoneNumber" class="fw-bold">Phone Number</label>
                         </div>
-
                         <div class="form-group text-center">
-                            <button type="submit" name="updateButton" value="update"
-                                    class="btn btn-primary col-md-6 mt-3 rounded-pill">
+                            <button type="submit" name="updateButton" value="update" class="btn btn-primary col-md-6 mt-3 rounded-pill">
                                 Update
                             </button>
                         </div>
-
                         <div class="form-group text-center">
-                            <button type="submit" name="deleteButton" value="delete"
-                                    class="btn btn-danger col-md-6 mt-3 rounded-pill">
+                            <button type="submit" name="deleteButton" value="delete" class="btn btn-danger col-md-6 mt-3 rounded-pill">
                                 Delete
                             </button>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -96,36 +71,30 @@
                         <div th:if="${#fields.hasErrors('newPassword')}" class="alert alert-danger">
                             <h5>Password was not updated properly.</h5>
                             <ul class="mb-0 ps-4 text-start fw-bold">
-                                <li th:each="err : ${#fields.errors('newPassword')}" th:text="${err}">
-                                </li>
+                                <li th:each="err : ${#fields.errors('newPassword')}" th:text="${err}"></li>
                             </ul>
                         </div>
 
                         <div th:if="${passwordError}" class="alert alert-danger text-center fw-bold" th:text="${passwordError}"></div>
                         <div th:if="${updatePasswordSuccess}" class="alert alert-success text-center fw-bold" th:text="${updatePasswordMsg}"></div>
-
                         <input type="hidden" name="id" th:value="${userView.id}"/>
 
                         <div class="form-floating mx-5 position-relative">
                             <input type="password" id="currentPassword" name="currentPassword" class="form-control border mt-3 pe-5" required>
                             <label for="currentPassword" class="fw-bold">Current Password</label>
-
-                            <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleCurrentPassword" style="cursor: pointer; z-index: 10;">
-                            </i>
+                            <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleCurrentPassword" style="cursor: pointer; z-index: 10;"></i>
                         </div>
 
                         <div class="form-floating mx-5 position-relative">
                             <input type="password" id="newPassword" name="newPassword" class="form-control border mt-3 pe-5" required>
                             <label for="newPassword" class="fw-bold">New Password</label>
-                            <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleNewPassword" style="cursor: pointer; z-index: 10;">
-                            </i>
+                            <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleNewPassword" style="cursor: pointer; z-index: 10;"></i>
                         </div>
 
                         <div class="form-floating mx-5 position-relative">
                             <input type="password" id="confirmPassword" name="confirmPassword" class="form-control border mt-3 pe-5" required>
                             <label for="confirmPassword" class="fw-bold">Confirm New Password</label>
-                            <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleConfirmPassword" style="cursor: pointer; z-index: 10;">
-                            </i>
+                            <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleConfirmPassword" style="cursor: pointer; z-index: 10;"></i>
                         </div>
 
                         <div>

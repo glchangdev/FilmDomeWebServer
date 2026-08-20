@@ -3,7 +3,6 @@ package com.filmdome.webserver.util;
 import com.filmdome.movies.entity.Movie;
 import com.filmdome.webserver.dto.MovieDto;
 import com.filmdome.webserver.dto.MovieSearchDto;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +45,7 @@ public class MovieUtil {
         movieBioDto.setName(mb.getName());
         movieBioDto.setRunTime(mb.getRunTime());
         movieBioDto.setRating(mb.getRating());
+        movieBioDto.setReleaseDate(mb.getReleaseDate());
         movieBioDto.setPoster(mb.getPoster());
         movieBioDto.setTrailer(mb.getTrailer());
         movieBioDto.setDescription(mb.getDescription());
