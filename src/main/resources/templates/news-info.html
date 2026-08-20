@@ -4,7 +4,7 @@
 <body>
 <div th:replace="~{fragments/pageLayout :: nav}"></div>
 
-<div class="container pt-4">
+<div class="container pt-4 pb-5">
     <h5 class="fw-bold">Date: <span class="fw-normal" th:text="${#temporals.format(news.date, 'MMM dd, yyyy')}"></span></h5>
     <h3><u><b><span th:text="${news.title}"></span></b></u></h3>
     <div class="container">
@@ -21,6 +21,6 @@
         </button>
     </form>
 </div>
-</body>
 <div th:replace="~{fragments/pageLayout :: foot}"></div>
+</body>
 </html>
