@@ -34,7 +34,6 @@ public class ActorUtil {
         }
 
         actorDto.setMovies(movies);
-
         return actorDto;
     }
 }
