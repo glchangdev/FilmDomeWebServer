@@ -38,7 +38,6 @@ logging:
     org.hibernate.SQL: OFF
     org.hibernate.orm.jdbc.bind: OFF
     org.hibernate.engine.transaction.jta.platform.internal: ERROR
-
     org.springframework.orm.jpa: WARN
     org.springframework.data.jpa: WARN
     org.springframework.web.servlet.DispatcherServlet: WARN
@@ -47,10 +46,10 @@ logging:
 
   logback:
     rollingpolicy:
-      max-file-size: 5MB
+      max-file-size: 100MB
       max-history: 30
       total-size-cap: 500MB
-      file-name-pattern: logs/webserver.%d{yyyy-MM-dd}.%i.log
+      file-name-pattern: logs/movie-service.%d{yyyy-MM-dd}.%i.log
 
 tmdb:
   api:
