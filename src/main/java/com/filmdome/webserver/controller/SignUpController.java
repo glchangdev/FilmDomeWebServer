@@ -72,7 +72,6 @@ public class SignUpController {
         } else {
 
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-
             User userEntity = UserUtil.convertTo(user);
             accountRepository.save(userEntity);
             session.setAttribute("user", UserUtil.convertToDisplayDto(userEntity));

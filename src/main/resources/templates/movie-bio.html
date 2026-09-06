@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
 <div th:replace="~{fragments/pageLayout :: head}"></div>
-
 <body>
-
 <div th:replace="~{fragments/pageLayout :: nav}"></div>
 
-<div class="container">
+<div class="container pb-5">
     <div class="container-fluid">
         <div class="col-md-12 mt-5 text-bold">
             <div class="fs-1">
@@ -19,7 +16,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="fs-4">
-                    <span th:text="${movie.runTime} + ' minutes | ' + ${movie.rating}"></span>
+                    <span th:text="${movie.runTime + ' minutes | ' + movie.rating + ' | ' + #dates.format(movie.releaseDate, 'MMMM dd, yyyy')}"></span>
                 </p>
             </div>
         </div>
@@ -78,6 +75,6 @@
         </div>
     </div>
 </div>
-</body>
 <div th:replace="~{fragments/pageLayout :: foot}"></div>
+</body>
 </html>

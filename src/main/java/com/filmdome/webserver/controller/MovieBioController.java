@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class MovieBioController {
 
-
     private final MoviesRepository moviesRepository;
 
     private final ActorRepository actorRepository;

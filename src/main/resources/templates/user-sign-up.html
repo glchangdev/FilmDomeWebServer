@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
 <script th:src="@{/js/user.js}"></script>
-
 <div th:replace="~{fragments/pageLayout :: head}"></div>
-
 <body class="d-flex align-items-center justify-content-center vh-100 loginSignUpBody">
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -20,60 +18,46 @@
                             <label for="firstName">First Name</label>
                             <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
                         </div>
-
                         <div class="form-floating  mx-5 mb-3">
                             <input type="text" id="lastName" th:field="*{lastName}" class="form-control" placeholder="Last Name" required>
                             <label for="lastName">Last Name</label>
                         </div>
-
                         <div class="form-floating  mx-5 mb-3">
                             <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="Email" required>
                             <label for="email">Email</label>
-
                             <div th:if="${emailErrorMessage}">
                                 <span th:text="${emailErrorMessage}" style="color: red"></span>
                             </div>
                         </div>
-
                         <div class="form-floating  mx-5 mb-3">
                             <input type="text" id="username" th:field="*{username}" class="form-control" placeholder="Username" required>
                             <label for="username">Username</label>
-
                             <div th:if="${usernameErrorMessage}">
                                 <span th:text="${usernameErrorMessage}" style="color: red"></span>
                             </div>
                         </div>
-
                         <div class="form-floating  mx-5 mb-3">
                             <input type="text" id="phoneNumber" th:field="*{phoneNumber}" class="form-control" placeholder="Phone Number" required>
                             <label for="phoneNumber">Phone Number</label>
-
                             <div th:if="${phoneNumberErrorMessage}">
                                 <span th:text="${phoneNumberErrorMessage}" style="color: red"></span>
                             </div>
                         </div>
-
                         <div class="form-floating mx-5 position-relative">
                             <input type="password" id="passwordId" th:field="*{password}" class="form-control pe-5" oninput="signUpPasswordCheck()" placeholder="Password" required>
-
                             <label for="passwordId">Password</label>
                             <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleSignupPassword" style="cursor:pointer; z-index:10;"></i>
-
                             <div th:if="${#fields.hasErrors('password')}">
                                 <span th:errors="*{password}" style="color:red"></span>
                             </div>
                         </div>
-
                         <div class="form-floating mx-5 position-relative mt-3">
                             <input type="password" id="signupConfirmPassword" name="confirmPassword" class="form-control pe-5" oninput="signUpPasswordCheck()" required>
-
                             <label for="signupConfirmPassword">
                                 Confirm Password
                             </label>
-
                             <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleSignupConfirmPassword" style="cursor:pointer; z-index:10;"></i>
                         </div>
-
                         <div>
                             <ul class="mt-3">
                                 <li id="length" class="text-danger">Minimum 6 characters</li>
@@ -82,13 +66,11 @@
                                 <li id="match" class="text-danger">Passwords match</li>
                             </ul>
                         </div>
-
                         <div class="form-group text-center">
                             <button type="submit" id="signUpButtonId" disabled class="btn fs-2 btn-primary btn-block h6 p-1 col-md-5 mt-1 rounded-pill loginSignUpButton">
                                 Sign up
                             </button>
                         </div>
-
                         <div class="text-center mt-2">
                             <p>Have an account? <a th:href="@{/displayLoginPage}">Sign in</a>
                         </div>

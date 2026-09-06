@@ -192,14 +192,10 @@ public class UserBioController {
      * @return User account page
      */
     @PostMapping("/updateUserPassword")
-    public String updateUserPassword(
-            @Valid @ModelAttribute PasswordView passwordView,
-            BindingResult result,
-            Model model) {
+    public String updateUserPassword(@Valid @ModelAttribute PasswordView passwordView, BindingResult result, Model model) {
 
         // Retrieve the user's account.
-        User user =
-                accountRepository.findById(passwordView.getId()).orElse(null);
+        User user = accountRepository.findById(passwordView.getId()).orElse(null);
 
         // If the account no longer exists,
         // redirect to the login page.
@@ -220,14 +216,13 @@ public class UserBioController {
         if (!passwordEncoder.matches(passwordView.getCurrentPassword(), user.getPassword())) {
 
             model.addAttribute("passwordError", "Current password is incorrect");
-
             return "user-update";
         }
 
         // Verify the new passwords match.
         if (!passwordView.getNewPassword().equals(passwordView.getConfirmPassword())) {
-            model.addAttribute("passwordError", "New passwords do not match");
 
+            model.addAttribute("passwordError", "New passwords do not match");
             return "user-update";
         }
 
