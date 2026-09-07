@@ -20,6 +20,10 @@ public class MovieDto {
 
     private String poster;
 
+    private Integer budget;
+
+    private Long revenue;
+
     private String trailer;
 
     private Date releaseDate;

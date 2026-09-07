@@ -47,6 +47,8 @@ public class MovieUtil {
         movieBioDto.setRating(mb.getRating());
         movieBioDto.setReleaseDate(mb.getReleaseDate());
         movieBioDto.setPoster(mb.getPoster());
+        movieBioDto.setBudget(mb.getBudget());
+        movieBioDto.setRevenue(mb.getRevenue());
         movieBioDto.setTrailer(mb.getTrailer());
         movieBioDto.setDescription(mb.getDescription());
         movieBioDto.setDirector(mb.getDirector());
