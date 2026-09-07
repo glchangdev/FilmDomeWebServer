@@ -49,6 +49,24 @@
 
         <div class="row">
             <div class="col-md fs-3">
+                <p>
+                    <b>Budget: </b>
+                    <span th:text="${movie.budget == 0 ? 'Not Available' : '$' + #numbers.formatInteger(movie.budget, 3, 'COMMA')}"></span>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md fs-3">
+                <p>
+                    <b>Revenue: </b>
+                    <span th:text="${movie.revenue == 0 ? 'Not Available' : '$' + #numbers.formatInteger(movie.revenue, 3, 'COMMA')}"></span>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md fs-3">
                 <p><b>Studios:</b></p>
                 <div th:each="studio : ${movie.studios}">
                     <span th:text="${studio.name}"></span>
