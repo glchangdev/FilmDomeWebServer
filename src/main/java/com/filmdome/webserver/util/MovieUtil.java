@@ -50,6 +50,8 @@ public class MovieUtil {
         movieBioDto.setBudget(mb.getBudget());
         movieBioDto.setRevenue(mb.getRevenue());
         movieBioDto.setTrailer(mb.getTrailer());
+        movieBioDto.setVoteAverage(mb.getVoteAverage());
+        movieBioDto.setVoteCount(mb.getVoteCount().intValue());
         movieBioDto.setDescription(mb.getDescription());
         movieBioDto.setDirector(mb.getDirector());
         movieBioDto.setStudios(StudioUtil.convertTo(mb.getStudios()));
