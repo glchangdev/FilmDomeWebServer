@@ -36,4 +36,8 @@ public class MovieDto {
 
     private List<ActorDto> actors;
 
+    private Double voteAverage;
+
+    private Integer voteCount;
+
 }

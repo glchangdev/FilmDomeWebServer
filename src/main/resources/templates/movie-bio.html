@@ -10,6 +10,8 @@
             <div class="fs-1">
                 <p>
                     <span th:text="${movie.name}"></span>
+                    <span class="fs-4 bi bi-star-fill text-warning"></span>
+                    <span class="fs-4" th:text="${' ' + #numbers.formatInteger(movie.voteAverage * 10, 0) + '% (' + #numbers.formatInteger(movie.voteCount, 3, 'COMMA') + ' Votes)'}"> </span>
                 </p>
             </div>
         </div>
