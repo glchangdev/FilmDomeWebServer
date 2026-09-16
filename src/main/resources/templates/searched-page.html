@@ -22,6 +22,17 @@
     </div>
     <div id="searchResults" class="row mt-4"></div>
 </div>
+<div id="searchOverlay" class="d-none">
+    <div class="text-center">
+        <div class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Searching...</span>
+        </div>
+
+        <div class="text-light mt-2">
+            Searching...
+        </div>
+    </div>
+</div>
 
 <script>
     function searchMovies() {
@@ -32,6 +43,8 @@
             messageDiv.textContent = "Please enter a movie, studio or director name.";
             return;
         }
+
+        document.getElementById("searchOverlay").classList.remove("d-none");
 
         messageDiv.textContent = "";
         const params = new URLSearchParams();
@@ -45,26 +58,26 @@
 
                 if (movies.length === 0) {
                     resultsDiv.innerHTML = "<p>No movies found.</p>";
-                    return;
+                } else {
+                    movies.forEach(movie => {
+                        const movieHtml = `
+                            <div class="col-md-3 mb-4 image-container">
+                                <a href="/displayMovieInfo?id=${movie.id}">
+                                    <img class="movieImage" src="https://image.tmdb.org/t/p/w500${movie.poster}" alt="${movie.name}">
+                                </a>
+                            <div class="ml-5 mt-2">
+                                <h5>${movie.name}</h5>
+                            </div>
+                        </div>`;
+                        resultsDiv.innerHTML += movieHtml;
+                    });
+                    document.getElementById("searchAllId").value = "";
                 }
-
-                movies.forEach(movie => {
-                    const movieHtml = `
-                        <div class="col-md-3 mb-4 image-container">
-                            <a href="/displayMovieInfo?id=${movie.id}">
-                                <img class="movieImage" src="https://image.tmdb.org/t/p/w500${movie.poster}" alt="${movie.name}">
-                            </a>
-                        <div class="ml-5 mt-2">
-                            <h5>${movie.name}</h5>
-                        </div>
-                    </div>
-                    `;
-                    resultsDiv.innerHTML += movieHtml;
-                });
-                document.getElementById("searchAllId").value = "";
+                document.getElementById("searchOverlay").classList.add("d-none");
             })
             .catch(error => {
                 console.error("Error during search:", error);
+                document.getElementById("searchOverlay").classList.add("d-none");
             });
     }
 </script>
