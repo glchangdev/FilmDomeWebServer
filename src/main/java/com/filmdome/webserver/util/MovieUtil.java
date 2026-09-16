@@ -28,16 +28,6 @@ public class MovieUtil {
         return movieDto;
     }
 
-    public static List<MovieDto> convertMovieList(List<Movie> movies) {
-        List<MovieDto> movieBioDtoList = new ArrayList<>();
-
-        for (Movie mb : movies) {
-            movieBioDtoList.add(convertMovie(mb));
-        }
-
-        return movieBioDtoList;
-    }
-
     public static MovieDto convertMovie(Movie mb) {
         MovieDto movieBioDto = new MovieDto();
 
