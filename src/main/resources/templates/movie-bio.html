@@ -80,7 +80,7 @@
             <div class="col-md">
                 <p class="fs-3"><br><b>Cast:</b></p>
                 <div class="row">
-                    <div class="col-auto" th:each="actor : ${movie.actors}" th:if="${actor.poster != null}">
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" th:each="actor : ${movie.actors}" th:if="${actor.poster != null}">
                         <a th:href="@{'/displayActorInfo?id=' + ${actor.id}}" class="text-decoration-none text-dark d-block">
                             <div class="actor-card">
                                 <img class="movieImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${actor.poster}}"/>
