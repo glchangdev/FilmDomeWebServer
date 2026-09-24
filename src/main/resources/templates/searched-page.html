@@ -4,9 +4,9 @@
 <div th:replace="~{fragments/pageLayout :: nav}"></div>
 <body>
 
-<div class="container bg-light pt-4 pb-5">
-    <h3 class="text-center mb-2 fw-bold display-4">Search For Movies</h3>
-    <div class="container mt-4">
+<div class="container bg-light pb-5 mb-5">
+    <div class="container pt-4">
+        <h3 class="text-center mb-2 fw-bold display-4">Search For Movies</h3>
         <div class="row mt-3 justify-content-center">
             <div class="col-md-8 d-flex">
                 <input type="text" id="searchAllId" placeholder="Search by title, studio, or director"
@@ -20,7 +20,8 @@
             <div id="searchMessage" class="text-danger mt-2 fs-5"></div>
         </div>
     </div>
-    <div id="searchResults" class="row mt-4"></div>
+
+    <div id="searchResults" class="row mt-4 g-3"></div>
 </div>
 <div id="searchOverlay" class="d-none">
     <div class="text-center">
@@ -61,12 +62,12 @@
                 } else {
                     movies.forEach(movie => {
                         const movieHtml = `
-                            <div class="col-md-3 mb-4 image-container">
+                            <div class="col-6 col-sm-4 col-md-3 col-lg-2>
                                 <a href="/displayMovieInfo?id=${movie.id}">
                                     <img class="movieImage" src="https://image.tmdb.org/t/p/w500${movie.poster}" alt="${movie.name}">
                                 </a>
-                            <div class="ml-5 mt-2">
-                                <h5>${movie.name}</h5>
+                            <div class="mt-2">
+                                <h6>${movie.name}</h6>
                             </div>
                         </div>`;
                         resultsDiv.innerHTML += movieHtml;
