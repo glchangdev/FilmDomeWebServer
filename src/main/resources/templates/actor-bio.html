@@ -13,11 +13,11 @@
             </div>
 
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3 fs-3">
-                        <img class="poster-img" th:src="@{'https://image.tmdb.org/t/p/w500' + ${actor.poster}}" style="width: 300px; height:400px"/>
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <img class="posterImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${actor.poster}}"/>
                     </div>
-                    <div class="fs-5 col-sm-8">
+                    <div class="col-sm-8">
                         <p>
                             <span th:text="${actor.summary}"></span>
                         </p>
@@ -25,14 +25,17 @@
                 </div>
             </div>
 
-            <div class="mt-4">
-                <h3>Starring Films:</h3>
-                <div class="row">
-                    <div class="col-auto"
-                         th:each="movie : ${actor.movies}">
-                        <a th:href="@{'/displayMovieInfo?id=' + ${movie.id}}">
-                            <img class="movieImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.poster}}" style="width:150px; height:225px"/>
-                        </a>
+            <div class="row">
+                <div class="col-md">
+                    <p class="fs-3"><br><b>Starring Films:</b></p>
+                    <div class="row">
+                        <div class="col-6 col-sm-4 col-md-3 col-lg-2" th:each="movie : ${actor.movies}">
+                            <a th:href="@{'/displayMovieInfo?id=' + ${movie.id}}" class="text-decoration-none text-dark d-block">
+                                <div class="movie-card">
+                                    <img class="movieImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.poster}}"/>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
