@@ -2,48 +2,48 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <script th:src="@{/js/user.js}"></script>
 <div th:replace="~{fragments/pageLayout :: head}"></div>
-<body class="d-flex align-items-center justify-content-center vh-100 loginSignUpBody">
+<body class="d-flex align-items-center justify-content-center min-vh-100 py-3 loginSignUpBody">
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-12 col-sm-10 col-lg-6">
             <div class="card rounded-bottom shadow bg-white">
                 <div class="card-header text-center text-white loginSignUpCardHeader">
                     <h4 class="fw-bold mt-2">Create Your Account</h4>
                 </div>
-                <div class="card-body loginSignUpCardBody">
+                <div class="card-body loginSignUpCardBody p-3 p-md-4">
                     <form th:action="@{/processUserSignUp}" method="post" th:object="${user}">
-                        <div class="form-floating  mx-5 mb-3">
+                        <div class="form-floating mx-0 mx-md-5 mb-3">
                             <input type="text" id="firstName" th:field="*{firstName}" class="form-control" placeholder="First Name" required>
                             <label for="firstName">First Name</label>
                             <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
                         </div>
-                        <div class="form-floating  mx-5 mb-3">
+                        <div class="form-floating mx-0 mx-md-5 mb-3">
                             <input type="text" id="lastName" th:field="*{lastName}" class="form-control" placeholder="Last Name" required>
                             <label for="lastName">Last Name</label>
                         </div>
-                        <div class="form-floating  mx-5 mb-3">
+                        <div class="form-floating mx-0 mx-md-5 mb-3">
                             <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="Email" required>
                             <label for="email">Email</label>
                             <div th:if="${emailErrorMessage}">
                                 <span th:text="${emailErrorMessage}" style="color: red"></span>
                             </div>
                         </div>
-                        <div class="form-floating  mx-5 mb-3">
+                        <div class="form-floating mx-0 mx-md-5 mb-3">
                             <input type="text" id="username" th:field="*{username}" class="form-control" placeholder="Username" required>
                             <label for="username">Username</label>
                             <div th:if="${usernameErrorMessage}">
                                 <span th:text="${usernameErrorMessage}" style="color: red"></span>
                             </div>
                         </div>
-                        <div class="form-floating  mx-5 mb-3">
+                        <div class="form-floating mx-0 mx-md-5 mb-3">
                             <input type="text" id="phoneNumber" th:field="*{phoneNumber}" class="form-control" placeholder="Phone Number" required>
                             <label for="phoneNumber">Phone Number</label>
                             <div th:if="${phoneNumberErrorMessage}">
                                 <span th:text="${phoneNumberErrorMessage}" style="color: red"></span>
                             </div>
                         </div>
-                        <div class="form-floating mx-5 position-relative">
+                        <div class="form-floating mx-0 mx-md-5 position-relative">
                             <input type="password" id="passwordId" th:field="*{password}" class="form-control pe-5" oninput="signUpPasswordCheck()" placeholder="Password" required>
                             <label for="passwordId">Password</label>
                             <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleSignupPassword" style="cursor:pointer; z-index:10;"></i>
@@ -51,7 +51,7 @@
                                 <span th:errors="*{password}" style="color:red"></span>
                             </div>
                         </div>
-                        <div class="form-floating mx-5 position-relative mt-3">
+                        <div class="form-floating mx-0 mx-md-5 position-relative mt-3">
                             <input type="password" id="signupConfirmPassword" name="confirmPassword" class="form-control pe-5" oninput="signUpPasswordCheck()" required>
                             <label for="signupConfirmPassword">
                                 Confirm Password
@@ -88,5 +88,6 @@
         </div>
     </div>
 </div>
+<div th:replace="~{fragments/pageLayout :: foot}"></div>
 </body>
 </html>

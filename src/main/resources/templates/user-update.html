@@ -4,15 +4,14 @@
 <div th:replace="~{fragments/pageLayout :: head}"></div>
 <body>
 <div th:replace="~{fragments/pageLayout :: nav}"></div>
-
-<div class="container">
-    <div class="row justify-content-center mt-5 pt-5">
-        <div class="col-md-6">
+<div class="container pb-5 mb-5">
+    <div class="row justify-content-center g-4 mt-3 mt-md-5 pt-2 pt-md-4">
+        <div class="col-12 col-lg-6">
             <div class="card rounded-bottom shadow bg-white">
                 <div class="card-header text-center text-white loginSignUpCardHeader">
                     <h4 class="fw-bold mt-3">Your Account</h4>
                 </div>
-                <div class="card-body loginSignUpCardBody">
+                <div class="card-body loginSignUpCardBody p-3 p-md-4">
                     <form th:action="@{/updateUserInfo}" method="post" th:object="${userView}">
                         <div th:if="${userView != null and #fields.hasErrors('phoneNumber')}" class="alert alert-danger">
                             <h5>Account field(s) doesn't meet their requirements:</h5>
@@ -20,28 +19,26 @@
                                 <li th:each="err : ${#fields.errors('phoneNumber')}" th:text="${err}"></li>
                             </ul>
                         </div>
-                        <div th:if="${userInputErrors}" class="alert alert-danger text-center fw-bold" th:text="${userInputErrors}">
-                        </div>
-                        <div th:if="${updateAccountSuccess}" class="alert alert-success text-center fw-bold" th:text="${updateAccountMsg}">
-                        </div>
+                        <div th:if="${userInputErrors}" class="alert alert-danger text-center fw-bold" th:text="${userInputErrors}"></div>
+                        <div th:if="${updateAccountSuccess}" class="alert alert-success text-center fw-bold" th:text="${updateAccountMsg}"></div>
                         <input type="hidden" name="id" th:value="${userView.id}">
-                        <div class="form-floating mx-5">
+                        <div class="form-floating mx-0 mx-md-4">
                             <input type="text" id="firstName" th:value="${userView.firstName}" name="firstName" class="form-control border" required>
                             <label for="firstName" class="fw-bold">First Name</label>
                         </div>
-                        <div class="form-floating mx-5">
+                        <div class="form-floating mx-0 mx-md-4">
                             <input type="text" id="lastName" th:value="${userView.lastName}" name="lastName" class="form-control border mt-3" required>
                             <label for="lastName" class="fw-bold">Last Name</label>
                         </div>
-                        <div class="form-floating mx-5">
+                        <div class="form-floating mx-0 mx-md-4">
                             <input type="email" id="email" th:value="${userView.email}" name="email" class="form-control border mt-3" required>
                             <label for="email" class="fw-bold">Email</label>
                         </div>
-                        <div class="form-floating mx-5">
+                        <div class="form-floating mx-0 mx-md-4">
                             <input type="text" id="username" th:value="${userView.username}" name="username" class="form-control border mt-3" required>
                             <label for="username" class="fw-bold">Username</label>
                         </div>
-                        <div class="form-floating mx-5">
+                        <div class="form-floating mx-0 mx-md-4">
                             <input type="text" id="phoneNumber" th:value="${userView.phoneNumber}" name="phoneNumber" class="form-control border mt-3" required>
                             <label for="phoneNumber" class="fw-bold">Phone Number</label>
                         </div>
@@ -66,7 +63,7 @@
                     <h4 class="fw-bold mt-3">Change Password</h4>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body p-3 p-md-4">
                     <form th:action="@{/updateUserPassword}" method="post" th:object="${passwordView}">
                         <div th:if="${#fields.hasErrors('newPassword')}" class="alert alert-danger">
                             <h5>Password was not updated properly.</h5>
@@ -79,26 +76,26 @@
                         <div th:if="${updatePasswordSuccess}" class="alert alert-success text-center fw-bold" th:text="${updatePasswordMsg}"></div>
                         <input type="hidden" name="id" th:value="${userView.id}"/>
 
-                        <div class="form-floating mx-5 position-relative">
+                        <div class="form-floating mx-0 mx-md-4 position-relative">
                             <input type="password" id="currentPassword" name="currentPassword" class="form-control border mt-3 pe-5" required>
                             <label for="currentPassword" class="fw-bold">Current Password</label>
                             <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleCurrentPassword" style="cursor: pointer; z-index: 10;"></i>
                         </div>
 
-                        <div class="form-floating mx-5 position-relative">
+                        <div class="form-floating mx-0 mx-md-4 position-relative">
                             <input type="password" id="newPassword" name="newPassword" class="form-control border mt-3 pe-5" required>
                             <label for="newPassword" class="fw-bold">New Password</label>
                             <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleNewPassword" style="cursor: pointer; z-index: 10;"></i>
                         </div>
 
-                        <div class="form-floating mx-5 position-relative">
+                        <div class="form-floating mx-0 mx-md-4 position-relative">
                             <input type="password" id="confirmPassword" name="confirmPassword" class="form-control border mt-3 pe-5" required>
                             <label for="confirmPassword" class="fw-bold">Confirm New Password</label>
                             <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" id="toggleConfirmPassword" style="cursor: pointer; z-index: 10;"></i>
                         </div>
 
-                        <div>
-                            <ul class="mt-3">
+                        <div class="mx-0 mx-md-4">
+                            <ul class="mt-3 ps-3">
                                 <li id="length" class="text-danger">Minimum 6 characters</li>
                                 <li id="uppercase" class="text-danger">At least one uppercase letter</li>
                                 <li id="number" class="text-danger">At least one number</li>
@@ -107,25 +104,25 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary col-md-6 mt-3 rounded-pill">
+                            <button type="submit" name="updateButton" value="update" class="btn btn-primary w-75 w-md-50 mt-3 rounded-pill">
                                 Update
                             </button>
                         </div>
                     </form>
                     <script>
+                        document.getElementById("newPassword").addEventListener("input", updateUserPasswordCheck);
+                        document.getElementById("confirmPassword").addEventListener("input", updateUserPasswordCheck);
 
-                      document.getElementById("newPassword").addEventListener("input", updateUserPasswordCheck);
-                      document.getElementById("confirmPassword").addEventListener("input", updateUserPasswordCheck);
-
-                      setupPasswordToggle("currentPassword", "toggleCurrentPassword");
-                      setupPasswordToggle("newPassword", "toggleNewPassword");
-                      setupPasswordToggle("confirmPassword", "toggleConfirmPassword");
+                        setupPasswordToggle("currentPassword", "toggleCurrentPassword");
+                        setupPasswordToggle("newPassword", "toggleNewPassword");
+                        setupPasswordToggle("confirmPassword", "toggleConfirmPassword");
                     </script>
                 </div>
             </div>
         </div>
-        <div th:replace="~{fragments/pageLayout :: foot}"></div>
     </div>
 </div>
+
+<div th:replace="~{fragments/pageLayout :: foot}"></div>
 </body>
 </html>

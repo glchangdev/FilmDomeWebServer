@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="~{fragments/pageLayout :: head}"></div>
-<body class="d-flex align-items-center justify-content-center vh-100 loginSignUpBody">
+<body class="d-flex align-items-center justify-content-center min-vh-100 py-3 loginSignUpBody">
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-5">
+        <div class="col-12 col-sm-10 col-md-7 col-lg-5">
             <div class="card rounded-bottom shadow bg-white">
                 <div class="card-header text-center text-white loginSignUpCardHeader">
                     <h4 class="fw-bold mt-2">Login to Your Account</h4>
                 </div>
                 <div class="card-body">
-                    <div th:if="${sessionExpired}" class="alert alert-warning mt-3 mx-5">
+                    <div th:if="${sessionExpired}" class="alert alert-warning mt-3 mx-0 mx-md-5">
                         Your session has expired. Please login again.
                     </div>
                     <form th:action="@{/login}" method="post" th:object="${userLogin}">
-                        <div class="form-floating mb-3 mx-5">
+                        <div class="form-floating mb-3 mx-0 mx-md-5">
                             <input type="text" id="loginInput" th:field="*{loginInput}" class="form-control" placeholder="Username, Email, Phone Number" required>
-                            <label for="loginInput">
-                                Username, Email, Phone Number
-                            </label>
+                            <label for="loginInput">Username, Email, Phone Number</label>
                         </div>
-
-                        <div class="form-floating mx-5">
+                        <div class="form-floating mx-0 mx-md-5">
                             <input type="password" id="password" th:field="*{password}" class="form-control mt-4" placeholder="Password" required>
-                            <label for="password">
-                                Password
-                            </label>
+                            <label for="password">Password</label>
                         </div>
-                        <div th:if="${errorMessage}" class="alert alert-danger mt-3 mx-5" role="alert">
-                            <span th:text="${errorMessage}"></span>
+                        <div th:if="${errorMessage}" class="alert alert-danger text-center fw-bold mt-4 mx-0 mx-md-5" role="alert" th:text="${errorMessage}">
+                            Your login credentials are incorrect.
                         </div>
                         <div class="form-group text-center">
                             <button type="submit" class="btn fs-3 btn-primary btn-block col-md-5 mt-3 rounded-pill">
@@ -37,7 +32,6 @@
                             </button>
                         </div>
                     </form>
-
                     <hr style="margin: 27px;">
                     <p class="text-center mt-4">
                         Don't have an account?
