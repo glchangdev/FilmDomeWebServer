@@ -3,43 +3,53 @@
 <div th:replace="~{fragments/pageLayout :: head}"></div>
 <body>
 <div th:replace="~{fragments/pageLayout :: nav}"></div>
-<div class="container pb-5">
+
+<div class="container pt-4 pb-5 mb-5">
     <div class="container-fluid">
         <div class="col-md-12 mt-5">
             <div class="fs-1">
-                <p>
-                    <span th:text="${actor.actorName}"></span>
+                <p><b><span th:text="${actor.actorName}"></span></b></p>
+            </div>
+        </div>
+        <div class="container mt-4 clearfix">
+            <!-- 1. Image Wrapper: Block-centered on mobile, Floated left on tablets/desktop (md and up) -->
+            <div class="d-block d-md-inline-block float-md-start text-center text-md-start mx-auto me-md-4 mb-4" style="max-width: fit-content;">
+                <img class="posterImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${actor.poster}}"/>
+            </div>
+
+            <!-- 2. Text Wrapper: Left-aligned text that wraps nicely around the image on desktop -->
+            <div class="actor-text-wrapper text-start">
+                <p class="fs-5">
+                    <span th:text="${actor.summary}"></span>
                 </p>
             </div>
 
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-3">
-                        <img class="posterImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${actor.poster}}"/>
-                    </div>
-                    <div class="col-sm-8">
-                        <p>
-                            <span th:text="${actor.summary}"></span>
-                        </p>
-                    </div>
+            <!--<div class="row align-items-center justify-content-center">
+                <div class="col-12 col-lg-3 text-center text-lg-start mb-4 mb-lg-0">
+                    <img class="posterImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${actor.poster}}"/>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md">
-                    <p class="fs-3"><br><b>Starring Films:</b></p>
-                    <div class="row">
-                        <div class="col-6 col-sm-4 col-md-3 col-lg-2" th:each="movie : ${actor.movies}">
-                            <a th:href="@{'/displayMovieInfo?id=' + ${movie.id}}" class="text-decoration-none text-dark d-block">
-                                <div class="movie-card">
-                                    <img class="movieImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.poster}}"/>
-                                </div>
-                            </a>
-                        </div>
+                <div class="col-12 col-lg-9">
+                    <p class="fs-5">
+                        <span th:text="${actor.summary}"></span>
+                    </p>
+                </div>
+            </div>-->
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <p class="fs-3"><b>Starring Films:</b></p>
+                <div class="row g-3">
+                    <div class="col-6 col-sm-4 col-md-3 col-lg-2" th:each="movie : ${actor.movies}">
+                        <a th:href="@{'/displayMovieInfo?id=' + ${movie.id}}" class="text-decoration-none text-dark d-block">
+                            <div class="movie-card">
+                                <img class="movieImage" th:src="@{'https://image.tmdb.org/t/p/w500' + ${movie.poster}}"/>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 <div th:replace="~{fragments/pageLayout :: foot}"></div>
