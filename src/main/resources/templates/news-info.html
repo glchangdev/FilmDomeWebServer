@@ -4,7 +4,7 @@
 <body>
 <div th:replace="~{fragments/pageLayout :: nav}"></div>
 
-<div class="container pt-4 pb-5">
+<div class="container pt-4 pb-5 mb-5">
     <h5 class="fw-bold">Date: <span class="fw-normal" th:text="${#temporals.format(news.date, 'MMM dd, yyyy')}"></span></h5>
     <h3><u><b><span th:text="${news.title}"></span></b></u></h3>
     <div class="container">
@@ -13,13 +13,13 @@
             <p class="fs-3 mt-3 col-sm-8" th:text="${news.description}"></p>
         </div>
     </div>
-</div>
-<div class="text-center mt-3 d-block">
-    <form th:action="@{/newsPage}" method="get">
-        <button type="submit" class="btn fs-2 btn-secondary btn-block my-3 col-md-4 rounded-pill signUpButton">Back to
-            News
-        </button>
-    </form>
+    <div class="text-center mt-4 d-block">
+        <form th:action="@{/newsPage}" method="get">
+            <button type="submit" class="btn fs-2 btn-secondary btn-block col-md-4 rounded-pill signUpButton">
+                Back to News
+            </button>
+        </form>
+    </div>
 </div>
 <div th:replace="~{fragments/pageLayout :: foot}"></div>
 </body>

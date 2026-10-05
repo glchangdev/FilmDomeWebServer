@@ -7,14 +7,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 
-@EntityScan({
-		"com.filmdome.movies.entity",
-		"com.filmdome.webserver.entity"
-})
-@EnableJpaRepositories({
-		"com.filmdome.movies.repository",
-		"com.filmdome.webserver.repository"
-})
+@EntityScan({"com.filmdome.movies.entity", "com.filmdome.webserver.entity"})
+@EnableJpaRepositories({"com.filmdome.movies.repository","com.filmdome.webserver.repository"})
 public class WebsiteprojectApplication {
 
 	public static void main(String[] args) {
